@@ -1,0 +1,129 @@
+name: One-time capstone notebook reorganization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/reorganize-capstone.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reorganize:
+    if: contains(github.event.head_commit.message, 'Reorganize capstone notebook')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reorganize notebook
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, uuid, os
+
+          path = 'work/notebooks/capstone.ipynb'
+          with open(path, encoding='utf-8') as f:
+              nb = json.load(f)
+
+          # Avoid doing the operation twice.
+          if nb.get('metadata', {}).get('organized_structure') == '7-part-capstone-v1':
+              print('Notebook is already organized; nothing to do.')
+              raise SystemExit(0)
+
+          byid = {c['id']: c for c in nb['cells'] if 'id' in c}
+
+          def md(text):
+              return {
+                  'cell_type': 'markdown',
+                  'metadata': {},
+                  'source': [line + '\n' for line in text.split('\n')],
+                  'id': uuid.uuid4().hex[:12]
+              }
+
+          def S(ids):
+              return [byid[x] for x in ids]
+
+          new = [
+              byid['WVLaPAMEtHtX'],
+              byid['RFvNHblewqAc'],
+              byid['YHd5b9S7tHth'],
+              md('### Project objective\n\nThe objective is to identify content pages that are most likely to experience meaningful search-performance decline and rank them for content-refresh prioritization using information available at decision time.')
+          ]
+
+          new += [
+              byid['FiqLerHCtHtk'],
+              md('### 2.1 Data source and access'),
+              *S(['MTu9RyLWynxm','WocraCbly1ea','U-haYbfYzBiV','Iqya2rclzani','oJRe-YeezkcX','eXsuy_Lwz2MX']),
+              md('### 2.2 March decision-window data and quality'),
+              *S(['zsPtde711crL','4BrJB0I31rjW','oaHm8z372Rvw','49XYH00a3ztQ','s9AOEyKx4H8Q','x-2XlvEfIETX','afcW2YOoKtQa','KyGBcKoNQv9s','lT-M9-keREgS']),
+              md('### 2.3 April target-window data and comparability'),
+              *S(['FUjmLTPtR8T0','rN8r3g_kSTAJ','4DVk5iAyULJs','F_6dv-3EUkga']),
+              md('### 2.4 Decision-time population and content eligibility'),
+              *S(['U93rsOhMdHwS','QxRL1i73d-OT','hwQOWDTAe8ae','8V83SidCfLuX'])
+          ]
+
+          new += [
+              byid['q4RHyWHttHto'],
+              md('### 3.1 Target design and threshold sensitivity'),
+              *S(['3AVFW64xUzPs','JUWvUbD1VFca','Nnf4C56XVc3G']),
+              md('### 3.2 Feature engineering and data-quality handling'),
+              *S(['4vxkquboV-5m','hxETkc3iX5Mm','MRBPkdiKau2C','f8bQMVOcbalT','UPJCiqtgctWS','dSXmsjo0f51r','G1SaGro1gYo2','Nwi8lZPZibaR','DGSKbPhLkLjB']),
+              md('### 3.3 Future decline target'),
+              *S(['J7VVLXj4llsi','dipzA9jfmog6','wAMG1TDCo9Rn']),
+              md('### 3.4 Baseline and leakage controls'),
+              *S(['7acE6wfdps0s','DyhqjBMKp3_f','xZL1rQCEqKPN','FItMVrjRqZfx','K8XBbo-NqlFF']),
+              md('### 3.5 Client-aware validation and model training'),
+              *S(['nKJKNfYzruq3','sKYlLzdHsjj3','sRvsDBlFuQ9h','HkAW987Euc92'])
+          ]
+
+          new += [
+              byid['lqWJEfxPtHtr'],
+              md('### 4.1 Model performance'),
+              byid['f8j2Mvc2u8L6'],
+              md('### 4.2 Baseline comparison'),
+              byid['FQoun4G0vZ7n']
+          ]
+
+          new += [
+              byid['9m6yTGKLtHtv'],
+              md('### 5.1 Interpretation boundaries\n\n- The target is a rule-based March-to-April decline definition, not a causal measure of why traffic declined.\n- The analysis uses one decision window and one future month, so temporal generalization is limited.\n- The supervised target is observable for 41,863 pages; many eligible pages lack sufficient future GSC observations.\n- Several source features contain missing values, especially backlinks and GA4/content metadata.\n- The client-aware test set is separated by client, but client-level distributions still differ, so performance may vary across future clients.\n- Conventional classification metrics are modest; the model is therefore best presented as a prioritization aid rather than a highly accurate classifier.\n- Future-dated optimization metadata was excluded from the ML feature set to avoid decision-time leakage.')
+          ]
+
+          new += [
+              byid['G5-Bzj3TtHtw'],
+              md('### 6.1 Final scoring and ranking'),
+              byid['v2aMZXCVvnkx'],
+              md('### 6.2 Reason codes and recommended actions'),
+              byid['j2eWcbA9v6pQ'],
+              md('### 6.3 Exported ranking'),
+              byid['vvnZ3QA4wZ-b']
+          ]
+
+          new += [
+              byid['UMddt_37tHty'],
+              md('### 7.1 Final artifact validation'),
+              byid['BglHtrScwrVO'],
+              md('### 7.2 Reproducibility and submission notes\n\nThe notebook preserves the end-to-end workflow from warehouse access and validation through feature construction, target creation, model training, evaluation, and final ranking export. The final CSV is the primary machine-readable artifact. Visualizations for the paper should use only aggregate or anonymized information.'),
+              byid['Q3I0S8-htHtz']
+          ]
+
+          nb['cells'] = new
+          nb.setdefault('metadata', {})['organized_structure'] = '7-part-capstone-v1'
+
+          with open(path, 'w', encoding='utf-8') as f:
+              json.dump(nb, f, ensure_ascii=False, indent=2)
+
+          print('Reorganized cells:', len(new))
+          PY
+
+      - name: Commit organized notebook and remove one-time workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add work/notebooks/capstone.ipynb .github/workflows/reorganize-capstone.yml
+          git rm .github/workflows/reorganize-capstone.yml
+          git commit -m 'Organize capstone notebook into 7 sections [skip ci]'
+          git push
