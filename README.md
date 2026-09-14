@@ -1,147 +1,272 @@
-# FlyRank ML Internship — Starter Repo
+# Google Search Ranking & Discoverability Intelligence
 
-**Applied Search Intelligence: Google Search Ranking & Discoverability**
+**Content Refresh Prioritization System — FlyRank ML Engineering Capstone**
 
-This is the starting point for the FlyRank ML Internship. You **clone it into your own public
-repo** (one click — *Use this template*), build everything there, and submit that repo URL on
-each assignment in your portal — it's your workspace, your submission, and your portfolio all
-at once. The rhythm is simple: do the work, commit it, submit on the card. Done.
+A client-grouped machine-learning decision-support prototype for prioritizing mature web pages that are at higher estimated risk of future measurable search-performance decline.
 
-Everything here runs on a small **anonymized** slice of real FlyRank search data. No credentials,
-no private client data, no setup headaches.
+**Author:** [Shoriful Islam](https://www.linkedin.com/in/shoriful2007)  
+**Repository:** `shoriful-mynul/flyrank-ml-internship`  
+**Data context:** FlyRank internship warehouse, March 2026 decision slice  
+**Status:** Capstone research prototype
 
-> **New here?** Two reads: **[SETUP.md](SETUP.md)** (GitHub, Colab, and data access — ten
-> minutes, with every silent pitfall flagged), then **[GUIDE.md](GUIDE.md)** (every file
-> explained, what to edit vs. leave alone, and where your own work goes — five minutes).
+> **Research boundary:** This project does not reverse-engineer or predict Google's exact ranking algorithm, guarantee ranking or traffic improvement, automatically modify content, or replace human editorial judgment. It is a decision-support and prioritization system based on observed search-performance data.
 
 ---
 
-## Quickstart — first win in 2 minutes
+## Live Research Website
 
-The fastest path is Google Colab (one click, zero install). Open Notebook 1 and run all cells:
+**[View the deployed technical case study](https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/)**
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/notebooks/01_first_look_and_discovery.ipynb?flush_cache=true)
- **Week 1 — Run it, then discover a real truth yourself**
+The website presents the problem framing, temporal design, population derivation, feature engineering, leakage controls, model comparison, prioritization queue, interpretability workflow, limitations, and research extensions.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/notebooks/02_your_first_readable_model.ipynb?flush_cache=true)
- **Week 2 — The model is just a rule you can read**
+## Core Research Notebook
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/notebooks/03_working_with_the_full_release.ipynb?flush_cache=true)
- **Weeks 3+ — The full release (~79M rows) via DuckDB, no download needed** — hosted at
- [`FlyRank/internship-warehouse`](https://huggingface.co/datasets/FlyRank/internship-warehouse) (gated: request access + accept the data-use terms, approval is instant)
+**[Open `work/notebooks/capstone.ipynb`](work/notebooks/capstone.ipynb)**
 
----
+The notebook contains the reproducible research workflow behind the deployed case study, including data preparation, target construction, client-grouped validation, baseline comparison, supervised modeling, ranking evaluation, final scoring, and output validation.
 
-## Your assignment notebooks — open, fill, save, done
+## Website Source
 
-Every assignment is one pre-named skeleton notebook in `work/notebooks/`. Click its badge,
-fill the sections in order, then **File → Save a copy in GitHub → OK** — the dialog is
-already pre-filled with your repo and the right path.
+The deployed case study source is maintained in **[`site/`](site/)** as a Vite + React + TypeScript application.
 
-> **The badges know whose repo they're in.** About 30 seconds after you create your copy, an
-> automatic commit ("Point Colab badges at this copy") rewires every badge in it to open
-> **your** notebooks — with your saved work — instead of the shared read-only ones. Reading
-> this on the shared starter page? The badges below open blank previews; make your copy
-> first ([SETUP.md](SETUP.md), Moment 1).
-
-| Week | Card | Notebook | Open |
-|---|---|---|---|
-| 1 | ML-02 | `w01_research_question` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w01_research_question.ipynb?flush_cache=true) |
-| 2 | ML-03 | `w02_ml_task_framing` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w02_ml_task_framing.ipynb?flush_cache=true) |
-| 3 | ML-04 | `w03_data_contract` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w03_data_contract.ipynb?flush_cache=true) |
-| 3 | ML-05 | `w03_feature_leakage_check` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w03_feature_leakage_check.ipynb?flush_cache=true) |
-| 4 | ML-06 | `w04_signal_audit` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w04_signal_audit.ipynb?flush_cache=true) |
-| 4 | ML-07 | `w04_baseline_score` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w04_baseline_score.ipynb?flush_cache=true) |
-| 5 | ML-08 | `w05_model` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w05_model.ipynb?flush_cache=true) |
-| 6 | ML-09 | `w06_validation_audit` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w06_validation_audit.ipynb?flush_cache=true) |
-| 7 | ML-10 | `w07_action_playbook` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/w07_action_playbook.ipynb?flush_cache=true) |
-| 8 | ML-11 | `capstone` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shoriful-mynul/flyrank-assignment1/blob/main/work/notebooks/capstone.ipynb?flush_cache=true) |
-
-Badges not opening *your* copy? Colab's built-in opener always works: **File → Open notebook
-→ GitHub tab** → paste `github.com/you/your-repo` → pick the notebook.
-
-### Prefer local?
-
-```bash
-git clone <this-repo-url>
-cd flyrank-ml-internship-starter
-pip install -r requirements.txt          # or: uv pip install -r requirements.txt
-python scripts/run_all.py
-```
-
-That runs the whole pipeline on the bundled sample and writes results to `outputs/`.
+- [`site/README.md`](site/README.md) — website development notes
+- [`site/package.json`](site/package.json) — frontend dependencies and scripts
+- [`site/src/`](site/src/) — React application source
 
 ---
 
-## What you get
+## Project Overview
 
-| Path | What it is |
-|---|---|
-| `notebooks/` | Week 1–2 **first-win notebooks** (Colab-ready). Start here. |
-| `scripts/01–05` + `run_all.py` | The runnable reference pipeline: prepare → baseline → train → evaluate → PDF. |
-| `data/raw/content_refresh_anonymized.csv` | The anonymized starter dataset (~30k pages). |
-| `outputs/` | Example outputs so you can see the **target shape** (`model_report.md`, `refresh_queue_sample.csv`, `charts/`). |
-| `work/` | **Your space.** Lane experiments and your capstone live here — see `work/README.md`. |
-| `docs/` | The core docs + the data dictionary (see below). |
+The operational problem is straightforward: editorial teams may have thousands of mature pages but limited capacity to review all of them. The project therefore frames content refresh as a prioritization problem:
 
-### Read these (in `docs/`)
+> **Given decision-time search, traffic, engagement, SEO/SERP, and content signals, which mature pages should be reviewed first because they have a higher estimated likelihood of measurable future search-performance decline?**
 
-1. **`ml-core-foundation-framework.md`** — the first-principles map of ML as a whole system. The backbone of the live sessions.
-2. **`ml-intern-dataset-and-lane-guide.md`** — how to use the data safely, the capstone workflow, and the analysis "lanes" you can pick from.
-3. **`intern-free-tooling-guide.md`** — the zero-budget tool stack (Python, Colab, free AI assistants). You never need to pay for anything.
-4. **`data-dictionary.md`** — all 44 columns: meaning, scale, and gotchas. Keep it open while you work.
+The system produces a ranked queue rather than an automatic content change. The final ranking is intended to narrow a large review population into a smaller, human-reviewable priority list.
+
+### Target definition
+
+A page is labeled as declining when its later impressions are **≤80% of its March decision-window baseline**. The project uses a strict temporal separation between decision-time features and later outcomes to reduce temporal leakage.
 
 ---
 
-## The pipeline (what `run_all.py` does)
+## Key Results
+
+| Measure | Result |
+|---|---:|
+| Original feature frame | 331,437 rows |
+| Clients in original frame | 32 |
+| Future-dated rows excluded | 2,124 |
+| Pages excluded for age <90 days | 78,254 |
+| Decision-time mature pages | 251,059 |
+| Observable supervised cohort | 41,863 |
+| Clients with observable outcomes | 28 |
+| Train clients | 22 |
+| Held-out test clients | 6 |
+| Client overlap | 0 |
+| Test positive rate | 50.08% |
+| Modeling features | 22 across 12 signal domains |
+| Final scored population | 41,912 pages |
+| Random Forest Precision@50 | **0.54** |
+| Heuristic Precision@50 | 0.40 |
+| Random Forest lift vs. test rate | 1.0784× |
+
+### Model comparison
+
+| Model | Precision@50 | ROC-AUC | F1 | Average Precision |
+|---|---:|---:|---:|---:|
+| **Random Forest** | **0.54** | 0.2843 | 0.3376 | 0.3861 |
+| Logistic Regression | 0.44 | 0.2969 | 0.2732 | 0.3866 |
+| Decision Tree | 0.30 | 0.3949 | 0.3897 | 0.4734 |
+| Heuristic baseline | 0.40 | — | — | — |
+
+**Why Random Forest was selected:** it produced the strongest **top-50 prioritization performance**, which is the operational objective of this prototype. It should not be described as the strongest broad-distribution classifier: several full-distribution metrics are weak, and the ROC-AUC values are below 0.5. The project therefore treats Precision@50 as the primary operational comparison while reporting the broader metrics transparently.
+
+---
+
+## Methodology
+
+The capstone follows an end-to-end research workflow:
 
 ```text
-01_prepare_features.py   clean + build the feature vector, define the label
-02_baseline_score.py     a transparent hand-rule "fix this first" score
-03_train_model.py        logistic regression, decision tree, random forest (client-holdout split)
-04_evaluate_and_export.py  ranked queue + charts + Markdown report
-05_build_pdf_report.py   a shareable PDF summary
+Problem framing
+      ↓
+Data ingestion & schema validation
+      ↓
+Decision-time eligibility filtering
+      ↓
+Feature engineering
+      ↓
+Temporal target construction
+      ↓
+Client-grouped train/test split
+      ↓
+Pipeline-safe imputation
+      ↓
+Baseline + supervised models
+      ↓
+Full-distribution evaluation
+      ↓
+Top-50 prioritization evaluation
+      ↓
+Final population scoring
+      ↓
+Ranked review queue + diagnostic reason codes
 ```
 
-On the bundled sample, the learned model clearly beats the hand-written rule at picking the right
-pages to review first (**Precision@50 ≈ 0.24 → 0.74**; the model number can land 0.68–0.74
-depending on library versions — the ~3x lift is the point). The notebooks compute these numbers
-live, so they always reflect the current data and environment.
+### Validation design
 
-**Teaching point:** the model is the capstone, but the *workflow* is the lesson —
-`problem framing → data cleaning → baseline → first model → evaluation → explainable recommendation`.
+- **Train:** 22 clients / 35,283 rows
+- **Held-out test:** 6 clients / 6,580 rows
+- **Client overlap:** 0
+- Missing-value handling is performed inside modeling pipelines.
+- Decision-time features are separated from the later outcome window.
+- Final ranking order is validated for strict descending probability behavior.
 
----
+### Feature domains
 
-## Data safety (read `DATA_USE.md`)
+The 22 modeling features span search performance, traffic, engagement, AI traffic, data availability, content age, search demand, competition, off-page signals, taxonomy, and content length.
 
-- Only the small **anonymized** CSV ships here — no client names, domains, URLs, titles, or keywords.
-- **Never** add raw private client data to this repo or your fork. Need more data? Request an approved
-  release from your mentor — never export it yourself.
-- Don't paste client data into third-party AI tools.
-- Frame every result as **observed / measured / directional / decision-support** — never
-  "I predicted Google's algorithm."
-
-The `.gitignore` blocks datasets by default, and CI fails any commit that includes a dataset.
+The largest observed missingness rates include backlinks (52.29%), engagement rate (39.49%), word/character count (27.34%), and GA4 measures (26.85%).
 
 ---
 
-## Assignments & schedule
+## Final Prioritization Output
 
-Weekly assignments, live events, and the capstone live on **your portal board** (your
-enrollment email has your access link). This repo is the shared technical foundation they all
-build on — and the `skills/` folder here is the instruction library for your AI assistant
-(start at [skills/README.md](skills/README.md)).
+The final scoring population contains **41,912 pages**. Each ranked record is represented by an anonymized client/page identifier, estimated decline probability, selected decision-time signals, rule-based diagnostic reason codes, and a recommended editorial review action.
 
-**First time with GitHub?** You need exactly four things (full walkthrough: [SETUP.md](SETUP.md)):
-1. A free account at github.com.
-2. Your own copy of this repo: **Use this template → Create a new repository** → public.
-   (One click — brings the notebooks, `work/`, and the CI leak-guard with it.)
-3. In Colab: *File → Save a copy in GitHub* — opened from your copy's badges, the dialog is
-   already pre-filled with your repo and path, so it's just OK (Colab handles auth).
-4. That's your submission repo — share its **github.com/you/your-repo** URL with Assignment 1
-   (never a colab.research.google.com or drive.google.com link).
+The exported result is designed for human review—not autonomous publishing or content modification.
+
+Final output validation includes:
+
+- 41,912 ranked rows
+- 11 canonical output columns
+- no duplicate client-page pairs
+- no missing decline probabilities
+- probabilities constrained to valid bounds
+- strict descending probability order
+- final probability range of 0.9288 to 0.0842
+
+Reason codes are **diagnostic rules**, not causal explanations.
 
 ---
 
-*Track leads: Mirza Ašćerić (ML) · Hole (data engineering). Code under MIT (see `LICENSE`); data under `DATA_USE.md`.*
+## Repository Structure
+
+```text
+flyrank-ml-internship/
+│
+├── README.md                         # Capstone overview and entry point
+├── DATA_USE.md                       # Public-data and privacy guidance
+├── LICENSE                           # Repository license
+│
+├── data/                             # Starter data area; protected by gitignore/CI rules
+├── docs/                             # FlyRank learning and data documentation
+├── notebooks/                        # Starter/reference notebooks
+├── outputs/                          # Small reference/example outputs
+├── scripts/                          # Reference pipeline
+├── skills/                           # Internship assistant guidance
+│
+├── work/                             # Capstone work and research artifacts
+│   ├── notebooks/
+│   │   └── capstone.ipynb            # Main capstone notebook
+│   ├── README.md
+│   └── ...
+│
+├── site/                             # Deployed technical case-study source
+│   ├── src/
+│   ├── public/                       # If present in the deployed source
+│   ├── package.json
+│   └── README.md
+│
+└── submission/
+    └── paper_url.txt                 # Exact deployed paper URL
+```
+
+The reference pipeline remains separate from the capstone implementation. Capstone-specific work belongs under `work/`, while the website source belongs under `site/`.
+
+---
+
+## Reproducibility
+
+### Research notebook
+
+Open the main notebook in Google Colab or a compatible Jupyter environment:
+
+[`work/notebooks/capstone.ipynb`](work/notebooks/capstone.ipynb)
+
+The project uses Python-based data processing and machine-learning tooling, including pandas, DuckDB, scikit-learn, and visualization libraries used by the notebook.
+
+### Website
+
+```bash
+cd site
+npm install
+npm run dev
+```
+
+For a production build:
+
+```bash
+cd site
+npm run build
+```
+
+The current website is a static research presentation. Do not commit local environment files or secrets.
+
+---
+
+## Public-Safety & Data Handling
+
+This repository is intended to remain safe for public portfolio use.
+
+- Do not add raw private client data.
+- Do not add client-identifying domains, URLs, titles, keywords, credentials, or secrets.
+- Keep anonymized identifiers where examples are necessary.
+- Use observed, measured, directional, and decision-support language.
+- Do not turn correlations into causal claims.
+- Do not claim to reproduce Google's ranking algorithm.
+
+GitHub's browser upload interface has a 25 MiB per-file limit, and secrets should never be committed to a public repository. citeturn0search0
+
+---
+
+## Limitations
+
+This is a research prototype rather than a production ranking system.
+
+1. Broad-distribution classification performance is weak.
+2. Precision@50 is the primary operational metric, so it does not summarize every modeling objective.
+3. Generalization is tested across held-out clients but remains limited by the available client population.
+4. Four clients do not have observable outcomes in the supervised target construction.
+5. Several feature groups contain substantial missingness.
+6. The decline label is tied to the selected March-to-later evaluation formulation.
+7. Reason codes are rule-based diagnostics and should not be interpreted as causal explanations.
+8. The study is observational and does not establish that refreshing a flagged page will cause improved search performance.
+9. The current implementation is a prototype, not a production service.
+
+### Future research
+
+Promising extensions include:
+
+- longitudinal rolling-window validation
+- learning-to-rank approaches
+- probability calibration
+- TreeSHAP-based explanation
+- semantic content embeddings
+- stronger temporal and client-level generalization tests
+- randomized experiments to measure whether recommended refresh actions actually improve outcomes
+
+---
+
+## Author
+
+**Shoriful Islam**  
+Machine Learning Engineering Student & Researcher
+
+[LinkedIn](https://www.linkedin.com/in/shoriful2007) · [GitHub](https://github.com/shoriful-mynul)
+
+---
+
+## Acknowledgement
+
+This project was developed as part of the **FlyRank ML Engineering Internship** capstone workflow using the internship's approved anonymized search-performance data environment and methodological framework.
