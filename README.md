@@ -23,13 +23,13 @@ The website presents the problem framing, temporal design, population derivation
 
 **[Open `work/notebooks/capstone.ipynb`](work/notebooks/capstone.ipynb)**
 
-The notebook contains the reproducible research workflow behind the deployed case study, including data preparation, target construction, client-grouped validation, baseline comparison, supervised modeling, ranking evaluation, final scoring, and output validation.
+The notebook contains the research workflow behind the deployed case study, including data preparation, target construction, client-grouped validation, baseline comparison, supervised modeling, ranking evaluation, final scoring, and output validation.
 
 ## Website Source
 
 The deployed case study source is maintained in **[`site/`](site/)** as a Vite + React + TypeScript application.
 
-- [`site/README.md`](site/README.md) — website development notes
+- [`site/README.md`](site/README.md) — website development and research notes
 - [`site/package.json`](site/package.json) — frontend dependencies and scripts
 - [`site/src/`](site/src/) — React application source
 
@@ -45,7 +45,7 @@ The system produces a ranked queue rather than an automatic content change. The 
 
 ### Target definition
 
-A page is labeled as declining when its later impressions are **≤80% of its March decision-window baseline**. The project uses a strict temporal separation between decision-time features and later outcomes to reduce temporal leakage.
+A page is labeled as declining when its later impressions are **≤80% of its March decision-window baseline impressions**. The project uses a strict temporal separation between decision-time features and later outcomes to reduce temporal leakage.
 
 ---
 
@@ -120,7 +120,7 @@ Ranked review queue + diagnostic reason codes
 - **Client overlap:** 0
 - Missing-value handling is performed inside modeling pipelines.
 - Decision-time features are separated from the later outcome window.
-- Final ranking order is validated for strict descending probability behavior.
+- Final ranking order is validated for descending probability behavior.
 
 ### Feature domains
 
@@ -174,8 +174,8 @@ flyrank-ml-internship/
 │
 ├── site/                             # Deployed technical case-study source
 │   ├── src/
-│   ├── public/                       # If present in the deployed source
 │   ├── package.json
+│   ├── package-lock.json             # if generated/committed
 │   └── README.md
 │
 └── submission/
@@ -211,7 +211,7 @@ cd site
 npm run build
 ```
 
-The current website is a static research presentation. Do not commit local environment files or secrets.
+The current website is a research presentation. Do not commit local environment files or secrets.
 
 ---
 
@@ -226,7 +226,7 @@ This repository is intended to remain safe for public portfolio use.
 - Do not turn correlations into causal claims.
 - Do not claim to reproduce Google's ranking algorithm.
 
-GitHub's browser upload interface has a 25 MiB per-file limit, and secrets should never be committed to a public repository. citeturn0search0
+The repository's ignore rules also keep local environment files and generated build artifacts out of version control.
 
 ---
 
