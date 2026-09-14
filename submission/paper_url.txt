@@ -1,1 +1,1 @@
-https://shoriful-mynul.github.io/flyrank-ml-internship/
+https://flyrank-ml-internship-omega.vercel.app/
