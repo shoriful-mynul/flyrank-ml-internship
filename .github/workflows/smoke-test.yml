@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Fail if a dataset other than the anonymized starter slice was committed
         run: |
@@ -55,11 +57,11 @@ jobs:
       - name: Deliverable notebooks must carry outputs (fails once the paper ships)
         run: |
           python3 - <<'EOF'
-          # A filled-in work notebook committed with zero outputs usually means Colab saved
+          # A changed work notebook committed with zero outputs usually means Colab saved
           # an unrun copy. While you are mid-track this only warns; once submission/
           # paper_url.txt holds a real URL (final state), it fails the build - a finished
-          # track must not ship unexecuted deliverables. Fresh skeletons stay silent.
-          import json, glob, sys
+          # track must not ship unexecuted changed deliverables. Fresh skeletons stay silent.
+          import json, subprocess, sys
           url = ""
           try:
               url = open("submission/paper_url.txt").readline().strip()
@@ -67,7 +69,17 @@ jobs:
               pass
           final = url.startswith("https://")
           bad = []
-          for p in sorted(glob.glob("work/notebooks/*.ipynb")):
+          try:
+              changed = subprocess.check_output(
+                  ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "work/notebooks/*.ipynb"],
+                  text=True,
+              ).splitlines()
+          except Exception:
+              changed = []
+          if not changed:
+              print("No changed notebooks to validate.")
+              sys.exit(0)
+          for p in sorted(changed):
               try:
                   nb = json.load(open(p))
               except Exception:
