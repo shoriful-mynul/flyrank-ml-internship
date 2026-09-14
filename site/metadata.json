@@ -1,0 +1,7 @@
+{
+  "name": "Google Search Ranking & Discoverability Intelligence",
+  "description": "ML engineering capstone research showcase: Content refresh prioritization system using leakage-aware pipelines, temporal target construction, and client-grouped modeling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
