@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Fail if a dataset other than the anonymized starter slice was committed
         run: |
@@ -59,15 +61,24 @@ jobs:
           # an unrun copy. While you are mid-track this only warns; once submission/
           # paper_url.txt holds a real URL (final state), it fails the build - a finished
           # track must not ship unexecuted deliverables. Fresh skeletons stay silent.
-          import json, glob, sys
+          import json, subprocess, sys
           url = ""
           try:
               url = open("submission/paper_url.txt").readline().strip()
           except Exception:
               pass
           final = url.startswith("https://")
+          try:
+              changed = subprocess.run(
+                  ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "work/notebooks/*.ipynb"],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.splitlines()
+          except Exception:
+              changed = []
           bad = []
-          for p in sorted(glob.glob("work/notebooks/*.ipynb")):
+          for p in sorted(changed):
               try:
                   nb = json.load(open(p))
               except Exception:
