@@ -1,20 +1,71 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Research Website — Google Search Ranking & Discoverability Intelligence
 
-# Run and deploy your AI Studio app
+This directory contains the Vite + React + TypeScript source for the deployed FlyRank ML Engineering capstone case study.
 
-This contains everything you need to run your app locally.
+## Purpose
 
-View your app in AI Studio: https://ai.studio/apps/01152a3e-3f7e-456e-adde-1dc481518f99
+The site is a technical research presentation for the **Content Refresh Prioritization System**. It documents the problem framing, temporal design, data populations, feature engineering, leakage controls, supervised modeling, ranking evaluation, final prioritization queue, interpretability workflow, limitations, and future research.
 
-## Run Locally
+## Live deployment
 
-**Prerequisites:**  Node.js
+https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/
 
+## Local development
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Prerequisite:** Node.js
+
+```bash
+npm install
+npm run dev
+```
+
+The Vite development server runs on the port configured by the `dev` script in `package.json`.
+
+## Production build
+
+```bash
+npm run build
+```
+
+Optional type-check:
+
+```bash
+npm run lint
+```
+
+## Source layout
+
+```text
+site/
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── metadata.json
+├── .env.example
+├── .gitignore
+└── src/
+    ├── App.tsx
+    ├── main.tsx
+    ├── index.css
+    ├── components/
+    └── data/
+        └── projectData.ts
+```
+
+## Data and secrets
+
+No private client data or credentials belong in this directory. The checked-in `.env.example` contains placeholders only. Keep real `.env.local` or other secret-bearing files out of Git.
+
+The current case study is primarily a static presentation: the research values displayed by the site are stored in `src/data/projectData.ts` and are intended to match the verified capstone results.
+
+## Research integrity
+
+The website must preserve the same methodological boundaries as the notebook:
+
+- it is a decision-support prioritization prototype;
+- it does not predict or reverse-engineer Google's exact ranking algorithm;
+- it does not guarantee ranking or traffic recovery;
+- it does not automatically modify content;
+- reason codes are diagnostic rules, not causal explanations;
+- observed results should not be presented as causal effects.
