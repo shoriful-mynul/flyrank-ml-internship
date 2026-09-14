@@ -30,7 +30,7 @@ The notebook contains the end-to-end research workflow: data access, schema chec
 
 The deployed technical case study is stored in `submission/paper_url.txt` and presented from the repository's `site/` application.
 
-**Live case study:** https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/
+**Live case study:** https://flyrank-ml-internship-omega.vercel.app/
 
 ## Research artifacts
 
