@@ -15,7 +15,7 @@ A client-grouped machine-learning decision-support prototype for prioritizing ma
 
 ## Live Research Website
 
-**[View the deployed technical case study](https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/)**
+**[View the deployed technical case study](https://flyrank-ml-internship-omega.vercel.app/)**
 
 The website presents the problem framing, temporal design, population derivation, feature engineering, leakage controls, model comparison, prioritization queue, interpretability workflow, limitations, and research extensions.
 
@@ -150,42 +150,6 @@ Reason codes are **diagnostic rules**, not causal explanations.
 
 ---
 
-## Repository Structure
-
-```text
-flyrank-ml-internship/
-│
-├── README.md                         # Capstone overview and entry point
-├── DATA_USE.md                       # Public-data and privacy guidance
-├── LICENSE                           # Repository license
-│
-├── data/                             # Starter data area; protected by gitignore/CI rules
-├── docs/                             # FlyRank learning and data documentation
-├── notebooks/                        # Starter/reference notebooks
-├── outputs/                          # Small reference/example outputs
-├── scripts/                          # Reference pipeline
-├── skills/                           # Internship assistant guidance
-│
-├── work/                             # Capstone work and research artifacts
-│   ├── notebooks/
-│   │   └── capstone.ipynb            # Main capstone notebook
-│   ├── README.md
-│   └── ...
-│
-├── site/                             # Deployed technical case-study source
-│   ├── src/
-│   ├── package.json
-│   ├── package-lock.json             # if generated/committed
-│   └── README.md
-│
-└── submission/
-    └── paper_url.txt                 # Exact deployed paper URL
-```
-
-The reference pipeline remains separate from the capstone implementation. Capstone-specific work belongs under `work/`, while the website source belongs under `site/`.
-
----
-
 ## Reproducibility
 
 ### Research notebook
@@ -208,25 +172,11 @@ For a production build:
 
 ```bash
 cd site
+npm install
 npm run build
 ```
 
 The current website is a research presentation. Do not commit local environment files or secrets.
-
----
-
-## Public-Safety & Data Handling
-
-This repository is intended to remain safe for public portfolio use.
-
-- Do not add raw private client data.
-- Do not add client-identifying domains, URLs, titles, keywords, credentials, or secrets.
-- Keep anonymized identifiers where examples are necessary.
-- Use observed, measured, directional, and decision-support language.
-- Do not turn correlations into causal claims.
-- Do not claim to reproduce Google's ranking algorithm.
-
-The repository's ignore rules also keep local environment files and generated build artifacts out of version control.
 
 ---
 
