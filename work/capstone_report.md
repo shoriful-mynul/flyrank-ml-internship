@@ -3,7 +3,7 @@
 - **Author:** Shoriful Islam
 - **Lane:** Content Refresh Prioritization / Refresh and Content Opportunity Scoring
 - **Repo:** `shoriful-mynul/flyrank-ml-internship`
-- **Deployed paper:** https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/
+- **Deployed paper:** https://flyrank-ml-internship-omega.vercel.app/
 - **Date:** September 2026
 
 > This report summarizes the research implementation in `work/notebooks/capstone.ipynb` and the deployed technical case study in `site/`.
