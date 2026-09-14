@@ -8,7 +8,7 @@ The site is a technical research presentation for the **Content Refresh Prioriti
 
 ## Live deployment
 
-https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app/
+https://flyrank-ml-internship-omega.vercel.app/
 
 ## Local development
 
