@@ -6,7 +6,7 @@
 
 ### Live portfolio
 
-https://ais-dev-pl3cncgmk4mtv6gt4t3wwl-391675207724.asia-southeast1.run.app
+https://flyrank-ml-internship-omega.vercel.app/
 
 The live portfolio presents the research question, data and decision-time framing, leakage-aware methodology, model comparison, ranking results, limitations, and future research directions.
 
@@ -41,6 +41,4 @@ The repository is intended to remain public-safe. Client and content identifiers
 
 ### Website source code
 
-The live portfolio was created in Google AI Studio Build Mode and deployed to Cloud Run. The `run.app` URL exposes the deployed application, not the editable AI Studio project source. Therefore, the website source should only be added to this repository after exporting/downloading or syncing the AI Studio project source to GitHub.
-
-Until that export is available, this repository treats the **capstone notebook as the canonical research/code artifact** and the deployed site as the presentation layer.
+The live portfolio source is maintained in the repository under `site/` as a Vite + React + TypeScript application. The public deployment is hosted on Vercel, while the repository remains the canonical source for the presentation layer.
